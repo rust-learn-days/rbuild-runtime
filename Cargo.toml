@@ -1,0 +1,8 @@
+[package]
+name = "rbuild-runtime"
+version = "0.1.0"
+authors = ["cuisongliu <cuisongliu@qq.com>"]
+edition = "2021"
+description = "rbuild-runtime, a rusty-hermit application"
+repository = "https://github.com/rust-learn-days/rbuild-runtime"
+[dependencies]
