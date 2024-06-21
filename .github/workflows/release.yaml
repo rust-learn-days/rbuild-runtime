@@ -24,8 +24,6 @@ jobs:
       fail-fast: false
       matrix:
         target:
-          - x86_64-apple-darwin
-          - aarch64-apple-darwin
           - aarch64-unknown-linux-gnu
           - x86_64-unknown-linux-gnu
           - aarch64-unknown-linux-musl
@@ -33,16 +31,16 @@ jobs:
         include:
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-latest
+            sealos: https://github.com/labring/sealos/releases/download/v4.3.7/sealos_4.3.7_linux_amd64.tar.gz
           - target: aarch64-unknown-linux-gnu
             os: ubuntu-latest
+            sealos: https://github.com/labring/sealos/releases/download/v4.3.7/sealos_4.3.7_linux_arm64.tar.gz
           - target: x86_64-unknown-linux-musl
             os: ubuntu-latest
+            sealos: https://github.com/labring/sealos/releases/download/v4.3.7/sealos_4.3.7_linux_amd64.tar.gz
           - target: aarch64-unknown-linux-musl
             os: ubuntu-latest
-          - target: x86_64-apple-darwin
-            os: macos-13
-          - target: aarch64-apple-darwin
-            os: macos-latest
+            sealos: https://github.com/labring/sealos/releases/download/v4.3.7/sealos_4.3.7_linux_arm64.tar.gz
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -54,6 +52,9 @@ jobs:
           RUST_CACHE_KEY_OS: rust-cache-${{ matrix.target }}
       - name: Install just
         uses: taiki-e/install-action@just
+      - name: Install sealos
+        run: |
+          url=${{ matrix.sealos }} just files
       - name: Install requirements
         run: cargo install cross --git https://github.com/cross-rs/cross
       - name: Setup target
