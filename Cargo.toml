@@ -7,3 +7,9 @@ description = "rbuild-runtime, a rusty-hermit application"
 repository = "https://github.com/rust-learn-days/rbuild-runtime"
 [dependencies]
 rust-embed="8.4.0"
+
+[profile.release]
+lto = true
+strip = true
+opt-level = "z"
+codegen-units = 1
