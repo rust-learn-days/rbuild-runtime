@@ -42,5 +42,5 @@ changelog:
 
 files:
     wget -O sealos.tar.gz ${url:-https://github.com/labring/sealos/releases/download/v4.3.7/sealos_4.3.7_linux_amd64.tar.gz}
-    tar -zxvf sealos.tar.gz sealos && rm -rm sealos.tar.gz
+    tar -zxvf sealos.tar.gz sealos && rm -rf sealos.tar.gz
     chmod a+x sealos && mv sealos files/
