@@ -7,6 +7,11 @@ description = "rbuild-runtime, a rusty-hermit application"
 repository = "https://github.com/rust-learn-days/rbuild-runtime"
 [dependencies]
 rust-embed="8.4.0"
+tokio = { version = "1.0.0", features = ["rt", "rt-multi-thread", "macros"] }
+
+[build-dependencies]
+reqwest = "0.12.5"
+tokio = { version = "1.0.0", features = ["rt", "rt-multi-thread", "macros"] }
 
 [profile.release]
 lto = true

@@ -40,10 +40,10 @@ jobs:
         run: cargo clippy --all-targets --all-features --tests --benches -- -D warnings
       - name: Execute rust tests
         run: cargo nextest run --all-features
+      - name: Test build
+        run: cargo build --release
       - name: Install just
         uses: taiki-e/install-action@just
       - name: Install sealos
         run: |
-          just files
-      - name: Test build
-        run: cargo build --release
+          just validate
