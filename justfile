@@ -42,3 +42,11 @@ changelog:
 
 validate:
     file files/sealos
+
+line:
+    tokei .
+
+check:
+    cargo check
+    cargo fmt -- --check
+    cargo deny check -d
