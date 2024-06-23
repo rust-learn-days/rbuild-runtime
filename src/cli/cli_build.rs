@@ -34,9 +34,9 @@ pub enum BuildCommand {
 
 #[derive(Parser, Debug)]
 pub struct DockerOpts {
-    #[arg(default_value = "20.10.9")]
+    #[arg(long, long_help = "docker cli version", default_value = "20.10.9")]
     pub version: String,
-    #[arg(default_value = "v0.3.14")]
+    #[arg(long, long_help = "crd dockerd version", default_value = "v0.3.14")]
     pub cri_docker_version: String,
 }
 
@@ -44,7 +44,9 @@ pub struct DockerOpts {
 pub struct ContainerdOpts {
     #[arg(long, default_value = "v1.6.23")]
     pub version: String,
-    #[arg(short, long, default_value = "runc", value_parser = parse_container_runtime)]
+    #[arg(
+        short, long, long_help = "using container runtime name", default_value = "runc", value_parser = parse_container_runtime
+    )]
     pub runtime: ContainerRuntime,
 }
 
